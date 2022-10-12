@@ -31,7 +31,7 @@
 			<form:input path="age" />
 			<form:errors style="color:red" path="age" />
 		</p>
-		<form:hidden path="dojo" />
+		<form:hidden path="dojo" value="${dojoId }"/>
 		<button type="submit">Create</button>
 	</form:form>
 </body>

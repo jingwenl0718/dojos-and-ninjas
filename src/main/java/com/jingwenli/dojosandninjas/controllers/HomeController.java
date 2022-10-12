@@ -83,21 +83,22 @@ public class HomeController {
 
 //	ADD NEW NINJA TO DOJO
 //	to show form
-	@GetMapping("/ninjas/add") 
-	public String addNinjaForm(Model model) {
+	@GetMapping("/ninjas/add/{dojoId}") 
+	public String addNinjaForm(@PathVariable("dojoId") Long id, Model model) {
 		model.addAttribute("newNinja", new Ninja());
+		model.addAttribute("dojoId", id);
 		return "addNinjaForm.jsp";
 	}
 	
 //  to process form
 	@PostMapping("/ninjas/add")
 	public String processAddNinja (
-			@Valid @ModelAttribute("newNinja") Ninja ninja, BindingResult result, Model model) {
+			@Valid @ModelAttribute("newNinja") Ninja ninja, BindingResult result) {
 		if (result.hasErrors()) {
 			return "addNinjaForm.jsp";
 		} else {
 			mainService.createNewNinja(ninja);
-			return "redirect:/dojos/{ninja.dojo.id}";
+			return "redirect:/dojos/" + ninja.getDojo().getId();
 		}
 	}
 			

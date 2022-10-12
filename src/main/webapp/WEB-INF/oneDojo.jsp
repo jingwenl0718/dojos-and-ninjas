@@ -27,7 +27,7 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	<a href="/ninjas/add">Add a Ninja</a><br/>
+	<a href="/ninjas/add/${dojo.id }">Add a Ninja</a><br/>
 	<a href="/">Back to Dashboard</a>
 </body>
 </html>
